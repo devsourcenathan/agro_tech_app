@@ -1,5 +1,7 @@
+import 'package:agro_tech_app/model/cart_model.dart';
 import 'package:agro_tech_app/pages/intro_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +12,37 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: IntroPage(),
+    return ChangeNotifierProvider(
+      create: (context) => CartModel(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Education App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: 'Poppins',
+          textTheme: const TextTheme(
+            titleLarge: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+            ),
+            bodyLarge: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+            ),
+            bodyMedium: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+            displayMedium: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        home: IntroPage(),
+      ),
     );
   }
 }
