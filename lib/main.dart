@@ -1,6 +1,8 @@
 import 'package:agro_tech_app/model/cart_model.dart';
 import 'package:agro_tech_app/pages/intro_page.dart';
+import 'package:agro_tech_app/utilities/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,6 +18,15 @@ class MyApp extends StatelessWidget {
       create: (context) => CartModel(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en', ''),
+          Locale('fr', ''),
+        ],
         title: 'Education App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
@@ -41,7 +52,9 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: IntroPage(),
+        home: Builder(builder: (BuildContext context) {
+          return const IntroPage();
+        }),
       ),
     );
   }
